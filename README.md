@@ -1,16 +1,18 @@
 # Bridge of Prosperity Backend
 
-You can find the deployed project at https://bridges-b-api.herokuapp.com/
+You can find the deployed project at https://labs27-a-bridges-api.herokuapp.com/
 
-You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=PARd7apawNM&feature=youtu.be
+You can find a demo vidoe of codebase at PLACEHOLDER
+
+(Previous cohort: https://www.youtube.com/watch?v=PARd7apawNM&feature=youtu.be)
 
 ## Contributors
 
-|                                                            [Cody Solomon](https://github.com/CodyFlys)                                                            |                                        [Robert Misch](https://github.com/RobertMisch)                                         |                                                           [Xavier Hoskins](https://github.com/xavierhoskins)                                                           |
+|                                                            [Mark Loegel](https://github.com/meloegel)                                                            |                                        [Lisa Maskovich](https://github.com/LeesahMasko)                                         |                                                           [Anthony Johnson](https://github.com/anthonyj713)                                                           |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://avatars2.githubusercontent.com/u/60758834?s=460&u=e9fd1bd445778f124a4107689c839b624a4ad217&v=4" width = "200" />](https://github.com/CodyFlys) |   [<img src="https://avatars0.githubusercontent.com/u/24370208?s=400&v=4" width = "200" />](https://github.com/RobertMisch)   | [<img src="https://avatars1.githubusercontent.com/u/59076433?s=460&u=7d6b6c0d420aec9596603733d2760b4912015f9d&v=4" width = "200" />](https://github.com/xavierhoskins) |
-|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CodyFlys)                                       |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/RobertMisch)                    |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/xavierhoskins)                                       |
-|                   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/robert-misch/)                   | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/cody-solomon/) |                    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/xavier-hoskins/)                     |
+| [<img src="https://ca.slack-edge.com/ESZCHB482-W012H6TMD9T-e9dfc68e55cc-512" width = "200" />](https://github.com/meloegel) |   [<img src="https://ca.slack-edge.com/ESZCHB482-W0138D971RN-6a25607f711a-512" width = "200" />](https://github.com/LeesahMasko)   | [<img src="https://ca.slack-edge.com/ESZCHB482-W012JHXB19Q-054009bb3aa9-512" width = "200" />](https://github.com/anthonyj713) |
+|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/meloegel)                                       |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/LeesahMasko)                    |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/anthonyj713)                                       |
+|                   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/mark-loegel/)                   | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/lisamjmaskovich/) |                    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/anthonyjohnson89/)                     |
 
 <br>
 <br>
@@ -19,9 +21,9 @@ You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=PARd7ap
 
 ## Project Overview
 
-Trello Board: https://trello.com/b/x1iIzJdj/labs25bridgesjessica
+Trello Board: https://trello.com/b/vvO28bPw/labs-27-bridges-to-prosperity-team-a
 
-Back end: https://bridges-b-api.herokuapp.com/built 
+Back end: https://labs27-a-bridges-api.herokuapp.com/
 
 Tech Stack: Node.js, Express, Knex, PostgreSql, Docker
 
@@ -57,7 +59,7 @@ OKTA_URL_ISSUER=
 <br/>
 GET REQUEST TO:
 
-https://bridges-b-api.herokuapp.com/data/bridges
+https://labs27-a-bridges-api.herokuapp.com/data/bridges
 
 Returns:
 
@@ -74,8 +76,8 @@ Returns:
         "cell_id": "370601",
         "village": "Kagarama",
         "village_id": "37060104",
-        "bridge_site_name": "Kagarama",
-        "project_stage": "Complete",
+        "name": "Kagarama",
+        "stage": "Complete",
         "sub_stage": "In Service",
         "project_code": "1007325",
         "bridge_type": "Suspension",
@@ -83,11 +85,9 @@ Returns:
         "lat": -2.322534,
         "long": 29.141945,
         "individuals_directly_served": "0",
-        "communities_served": [
-            "unavailable"
-        ],
+        "communities_served": [],
         "form_name": "Project Assessment - 2017.7.12",
-        "casesafeid_form": "a1if1000002NJhdAAG",
+        "case_safeid_form": "a1if1000002NJhdAAG",
         "bridge_opportunity_id": "006f100000a82Qz",
         "bridge_image": "https://farm5.staticflickr.com/4829/44946210045_874f324731_k.jpg"
     },
@@ -103,8 +103,8 @@ Returns:
         "cell_id": "570202",
         "village": "Gikana",
         "village_id": "57020201",
-        "bridge_site_name": "Gikana",
-        "project_stage": "Rejected",
+        "name": "Gikana",
+        "stage": "Rejected",
         "sub_stage": "Technical",
         "project_code": "1007327",
         "bridge_type": "?",
@@ -112,43 +112,12 @@ Returns:
         "lat": -2.072628,
         "long": 30.204382,
         "individuals_directly_served": "0",
-        "communities_served": [
-            "unavailable"
-        ],
+        "communities_served": [],
         "form_name": "Project Assessment - 2018.11.30",
-        "casesafeid_form": "a1if1000002hTA9AAM",
+        "case_safeid_form": "a1if1000002hTA9AAM",
         "bridge_opportunity_id": "006f100000a86Cp",
         "bridge_image": null
-    },
-    {
-        "id": 3,
-        "country": "Rwanda",
-        "district_id": 13,
-        "province": "Kigali",
-        "district": "Kicukiro",
-        "sector": "Juru-Masaka",
-        "sector_id": "1308",
-        "cell": "Rusheshe",
-        "cell_id": "130806",
-        "village": "Cyankongi",
-        "village_id": "13080601",
-        "bridge_site_name": "Cyankongi",
-        "project_stage": "Rejected",
-        "sub_stage": "Technical",
-        "project_code": "1007328",
-        "bridge_type": "?",
-        "span": 100,
-        "lat": -2.048451,
-        "long": 30.191277,
-        "individuals_directly_served": "0",
-        "communities_served": [
-            "unavailable"
-        ],
-        "form_name": "Project Assessment - 2018.11.30",
-        "casesafeid_form": "a1if1000002hT9pAAE",
-        "bridge_opportunity_id": "006f100000a86Cq",
-        "bridge_image": null
-    }...
+    }
 
     ETC
 ```
@@ -157,7 +126,7 @@ Returns:
 
 GET REQUEST TO:
 
-https://bridges-b-api.herokuapp.com/bridges/:id (Ex. 13)
+https://labs27-a-bridges-api.herokuapp.com/bridges/:id (Ex. 13)
 
 Returns:
 
@@ -174,8 +143,8 @@ Returns:
         "cell_id": "421003",
         "village": "Mwanza",
         "village_id": "42100307",
-        "bridge_site_name": "Gitwa",
-        "project_stage": "Identified",
+        "name": "Gitwa",
+        "stage": "Identified",
         "sub_stage": "Identified in Needs Assessment",
         "project_code": "1007340",
         "bridge_type": "Suspended",
@@ -189,7 +158,7 @@ Returns:
             "Mwanza"
         ],
         "form_name": "Project Assessment - 2018.8.17",
-        "casesafeid_form": "a1if1000002Vi9TAAS",
+        "case_safeid_form": "a1if1000002Vi9TAAS",
         "bridge_opportunity_id": "006f100000a86D2",
         "bridge_image": null
     },
@@ -199,7 +168,7 @@ Returns:
 
 PUT REQUEST TO:
 
-https://bridges-b-api.herokuapp.com/bridges/:id (Ex. 13)
+https://labs27-a-bridges-api.herokuapp.com/bridges/:id (Ex. 13)
 
 Returns:
 
@@ -216,8 +185,8 @@ Returns:
         "cell_id": "421003",
         "village": "Mwanza",
         "village_id": "42100307",
-        "bridge_site_name": "Gitwa",
-        "project_stage": "Identified",
+        "name": "Gitwa",
+        "stage": "Identified",
         "sub_stage": "Identified in Needs Assessment",
         "project_code": "1007340",
         "bridge_type": "Suspended",
@@ -231,7 +200,7 @@ Returns:
             "Mwanza"
         ],
         "form_name": "Project Assessment - 2018.8.17",
-        "casesafeid_form": "a1if1000002Vi9TAAS",
+        "case_safeid_form": "a1if1000002Vi9TAAS",
         "bridge_opportunity_id": "006f100000a86D2",
         "bridge_image": null
     },

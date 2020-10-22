@@ -2,7 +2,7 @@
 
 You can find the deployed project at https://labs27-a-bridges-api.herokuapp.com/
 
-You can find a demo vidoe of codebase at PLACEHOLDER
+You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=frpHHafi3po&feature=youtu.be
 
 (Previous cohort: https://www.youtube.com/watch?v=PARd7apawNM&feature=youtu.be)
 

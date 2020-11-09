@@ -14,4 +14,20 @@ const bridgeData = async () => {
   return await dsClient.get(`/final-data/extended`);
 };
 
-module.exports = { getPrediction, getViz, bridgeData };
+const hospitalData = async () => {
+  // Waiting for DS hospital endpoint
+  return await dsClient.get('/hospital-endpoint');
+};
+
+const amenityData = async () => {
+  // Waiting for DS amenity endpoint
+  return await dsClient.get('/amenity-endpoint');
+};
+
+module.exports = {
+  getPrediction,
+  getViz,
+  bridgeData,
+  hospitalData,
+  amenityData,
+};

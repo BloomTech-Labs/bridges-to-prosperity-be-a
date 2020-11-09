@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const express = require('express');
 const router = express.Router();
 const dsModel = require('./dsModel');
@@ -125,6 +126,28 @@ router.get('/bridges', (req, res) => {
     })
     .catch((error) => {
       console.error(error);
+      res.status(500).json(error);
+    });
+});
+
+router.get('/hospitals', (req, res) => {
+  dsModel
+    .hospitalData()
+    .then((response) => {
+      res.status(200).json(response.data);
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
+});
+
+router.get('/amenities', (req, res) => {
+  dsModel
+    .amenityData()
+    .then((response) => {
+      res.status(200).json(response.data);
+    })
+    .catch((error) => {
       res.status(500).json(error);
     });
 });

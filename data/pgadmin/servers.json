@@ -1,11 +1,11 @@
 {
   "Servers": {
     "1": {
-        "Name": "API-dev",
-        "Group": "Dev",
+        "Name": "lab28",
+        "Group": "Servers",
         "Port": 5432,
-        "Username": "docker",
-        "Host": "pg-api-starter",
+        "Username": "postgres",
+        "Host": "localhost",
         "SSLMode": "prefer",
         "MaintenanceDB": "postgres"
     }

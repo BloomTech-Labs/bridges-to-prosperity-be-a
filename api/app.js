@@ -25,6 +25,7 @@ const indexRouter = require('./index/indexRouter');
 const profileRouter = require('./profile/profileRouter');
 const dsRouter = require('./dsService/dsRouter');
 const bridgeRouter = require('./bridge/bridgeRouter');
+const amenitiesRouter = require('./amenities/amenitiesRouter');
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use(['/profile', '/profiles'], profileRouter);
 app.use('/bridges', bridgeRouter);
+app.use('/amenities', amenitiesRouter);
 app.use('/data', dsRouter);
 
 // catch 404 and forward to error handler
@@ -131,8 +133,8 @@ const updateBridgesFromDS = async () => {
 
 setInterval(updateBridgesFromDS, 1000 * 60 * 60 * 24);
 
-if (process.env.NODE_ENV !== 'test') {
-  updateBridgesFromDS();
-}
+// if (process.env.NODE_ENV !== 'test') {
+//   updateBridgesFromDS();
+// }
 
 module.exports = app;

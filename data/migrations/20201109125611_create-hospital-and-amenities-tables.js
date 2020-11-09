@@ -4,7 +4,7 @@ exports.up = function(knex) {
     .createTable('hospitals', function(table) {
         table.integer('hospital_id');
         table.string('hospital_name');
-        table.integer('amenities_id');
+        table.integer('closest_bridge_id');
         table.float('lat');
         table.float('long');
       })

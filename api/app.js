@@ -26,6 +26,7 @@ const profileRouter = require('./profile/profileRouter');
 const dsRouter = require('./dsService/dsRouter');
 const bridgeRouter = require('./bridge/bridgeRouter');
 const hospitalRouter = require('./hospital/hospitalRouter');
+const amenitiesRouter = require('./amenities/amenitiesRouter');
 
 const app = express();
 
@@ -55,6 +56,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use(['/profile', '/profiles'], profileRouter);
 app.use('/bridges', bridgeRouter);
+app.use('/amenities', amenitiesRouter);
 app.use('/data', dsRouter);
 app.use('/hospitals', hospitalRouter);
 

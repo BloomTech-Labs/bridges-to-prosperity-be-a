@@ -11,12 +11,12 @@ const getViz = (state) => {
 };
 
 const bridgeData = async () => {
-  return await dsClient.get(`/final-data/extended`);
+  return await dsClient.get(`/bridge-data`);
 };
 
 const hospitalData = async () => {
   // Waiting for DS hospital endpoint
-  return await dsClient.get('/hospital-endpoint');
+  return await dsClient.get('/hospital-data');
 };
 
 const amenityData = async () => {

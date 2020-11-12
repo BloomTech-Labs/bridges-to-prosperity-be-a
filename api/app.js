@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 const config_result = dotenv.config();
 const dsModel = require('./dsService/dsModel');
 const bridgeModel = require('./bridge/bridgeModel');
+const hospitalModel = require('./hospital/hospitalModel');
 if (process.env.NODE_ENV != 'production' && config_result.error) {
   throw config_result.error;
 }
@@ -89,6 +90,33 @@ app.use(function (err, req, res, next) {
 
 // Set interval will run every 24 hours
 
+const updateHospitalsFromDS = async () => {
+  try {
+    const dsHospitals = await dsModel.hospitalData();
+    const hospitals = (await hospitalModel.getAll()).map((h) => {
+      return h['hospital_name'];
+    });
+    const newHospitals = Object.values(dsHospitals.data).filter(
+      (dsHospital) => {
+        return !hospitals.includes(dsHospital['Hospital']);
+      }
+    );
+    const newHospitalTransformed = newHospitals.map((hospital) => {
+      return {
+        hospital_id: hospital['FID'],
+        hospital_name: hospital['Hospital'],
+        lat: hospital['Lat'],
+        long: hospital['Long'],
+        hospital_image: hospital['url'],
+        emergency_number: hospital['Emergency'],
+      };
+    });
+    await hospitalModel.addHospital(newHospitalTransformed);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const updateBridgesFromDS = async () => {
   try {
     const dsBridges = await dsModel.bridgeData();
@@ -134,6 +162,7 @@ const updateBridgesFromDS = async () => {
 };
 
 setInterval(updateBridgesFromDS, 1000 * 60 * 60 * 24);
+setInterval(updateHospitalsFromDS, 1000 * 60 * 60 * 24);
 
 // if (process.env.NODE_ENV !== 'test') {
 //   updateBridgesFromDS();

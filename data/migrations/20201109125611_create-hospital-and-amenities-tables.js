@@ -4,7 +4,6 @@ exports.up = function(knex) {
     .createTable('hospitals', function(table) {
         table.integer('hospital_id');
         table.string('hospital_name');
-        table.integer('closest_bridge_id');
         table.float('lat');
         table.float('long');
       })
@@ -18,7 +17,7 @@ exports.up = function(knex) {
       })
 };
 
-exports.down = function(knex) {
-    knex.schema.dropTableIfExists('hospitals');
+exports.down = async (knex) => {
+    await knex.schema.dropTableIfExists('hospitals');
     return knex.schema.dropTableIfExists('amenities');
 };

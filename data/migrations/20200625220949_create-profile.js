@@ -12,41 +12,30 @@ exports.up = (knex) => {
     .createTable('bridges', function (bridges) {
       bridges.increments();
       bridges.string('country');
-      bridges.integer('district_id');
-      bridges.string('province');
       bridges.string('district');
-      bridges.string('sector');
-      bridges.string('sector_id');
+      bridges.string('province')
       bridges.string('cell');
-      bridges.string('cell_id');
       bridges.string('village');
-      bridges.string('village_id');
       bridges.string('name');
       bridges.string('stage');
-      bridges.string('sub_stage');
       bridges.string('project_code').unique();
       bridges.string('type');
       bridges.string('span');
       bridges.float('lat');
       bridges.float('long');
       bridges.string('individuals_directly_served');
-      bridges.string('form');
+      bridges.string('form_requested_by');
+      bridges.string('rejected_comments')
       bridges.string('case_safe_id');
-      bridges.string('opportunity_id');
       bridges.string('bridge_image');
-      bridges.string('inc_income');
-      bridges.string('inc_income_rwf');
-      bridges.string('inc_income_usd');
-      bridges.string('community_served_1');
-      bridges.string('community_served_1_id');
-      bridges.string('community_served_2');
-      bridges.string('community_served_2_id');
-      bridges.string('community_served_3');
-      bridges.string('community_served_3_id');
-      bridges.string('community_served_4');
-      bridges.string('community_served_4_id');
-      bridges.string('community_served_5');
-      bridges.string('community_served_5_id');
+      bridges.string('land_ownership');
+      bridges.string('land_ownership_permission');
+      bridges.string('nearest_city');
+      bridges.float('distance_from_hospital');
+      bridges.integer('crossing_deaths');
+      bridges.integer('crossing_injuries');
+      bridges.string('crossing_incident_desc');
+      bridges.string('social_info');
     });
 };
 

@@ -124,34 +124,33 @@ const updateBridgesFromDS = async () => {
       return b['project_code'];
     });
     const newBridges = Object.values(dsBridges.data).filter((dsBridge) => {
-      return !bridges.includes(dsBridge['project_code']);
+      return !bridges.includes(dsBridge['Bridge Opportunity: Project Code']);
     });
     const newBridgesTransformed = newBridges.map((bridge) => {
       return {
-        country: bridge['country'],
-        province: bridge['province'],
-        district: bridge['district'],
-        district_id: bridge['district_id'],
-        sector: bridge['sector'],
-        sector_id: bridge['sector_id'],
-        village: bridge['village'],
-        village_id: bridge['village_id'],
-        cell: bridge['cell'],
-        cell_id: bridge['cell_id'],
-        bridge_site_name: bridge['name'],
-        project_stage: bridge['stage'],
-        sub_stage: bridge['sub_stage'],
-        project_code: bridge['project_code'],
-        bridge_type: bridge['type'],
-        span: bridge['span'],
-        lat: bridge['lat'],
-        long: bridge['long'],
-        individuals_directly_served: bridge['Individuals_directly_served'],
-        communities_served:
-          '{"' + bridge['communities_served'].join('","') + '"}',
-        form_name: bridge['form'],
-        casesafeid_form: bridge['case_safe_id'],
-        bridge_opportunity_id: bridge['opportunity_id'],
+        // country: bridge['country'],
+        district: bridge['Bridge Opportunity: Level 2 Government'],
+        province: bridge['Bridge Opportunity: Level 1 Government'],
+        name: bridge['Bridge Name'],
+        stage: bridge['Bridge Opportunity: Stage'],
+        project_code: bridge['Bridge Opportunity: Project Code'],
+        type: bridge['Bridge Opportunity: Bridge Type'],
+        span: bridge['Bridge Opportunity: Span (m)'],
+        lat: bridge['Proposed Bridge Location (GPS) (Latitude)'],
+        long: bridge['Proposed Bridge Location (GPS) (Longitude)'],
+        individuals_directly_served: bridge['Bridge Opportunity: Individuals Directly Served'],
+        form_requested_by: bridge['Form: Created By'],
+        rejected_comments: bridge['2013-14: Rejection Comments'],
+        case_safe_id: bridge['Bridge Opportunity: CaseSafeID'],
+        bridge_image: bridge['Bridge Opportunity: General Project Photos'],
+        land_ownership: bridge['2013-14: Land Ownership'],
+        land_ownership_permission: bridge['2013-14: Land owner Permission'],
+        nearest_city: bridge['Name of nearest city'],
+        crossing_deaths: bridge['River crossing deaths in last 3 years'],
+        crossing_injuries: bridge['River crossing injuries in last 3 years'],
+        crossing_incident_desc: bridge['Incident descriptions'],
+        social_info: bridge['Notes on social information'],
+        distance_from_hospital: bridge['Distance from nearest hospital (miles)'],
       };
     });
 

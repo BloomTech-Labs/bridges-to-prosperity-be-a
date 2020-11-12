@@ -25,6 +25,7 @@ const indexRouter = require('./index/indexRouter');
 const profileRouter = require('./profile/profileRouter');
 const dsRouter = require('./dsService/dsRouter');
 const bridgeRouter = require('./bridge/bridgeRouter');
+const hospitalRouter = require('./hospital/hospitalRouter');
 const amenitiesRouter = require('./amenities/amenitiesRouter');
 
 const app = express();
@@ -57,6 +58,7 @@ app.use(['/profile', '/profiles'], profileRouter);
 app.use('/bridges', bridgeRouter);
 app.use('/amenities', amenitiesRouter);
 app.use('/data', dsRouter);
+app.use('/hospitals', hospitalRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

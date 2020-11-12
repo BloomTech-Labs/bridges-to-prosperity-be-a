@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 const config_result = dotenv.config();
 const dsModel = require('./dsService/dsModel');
 const bridgeModel = require('./bridge/bridgeModel');
+const hospitalModel = require('./hospital/hospitalModel');
 if (process.env.NODE_ENV != 'production' && config_result.error) {
   throw config_result.error;
 }
@@ -89,6 +90,33 @@ app.use(function (err, req, res, next) {
 
 // Set interval will run every 24 hours
 
+const updateHospitalsFromDS = async () => {
+  try {
+    const dsHospitals = await dsModel.hospitalData();
+    const hospitals = (await hospitalModel.getAll()).map((h) => {
+      return h['hospital_name'];
+    });
+    const newHospitals = Object.values(dsHospitals.data).filter(
+      (dsHospital) => {
+        return !hospitals.includes(dsHospital['Hospital']);
+      }
+    );
+    const newHospitalTransformed = newHospitals.map((hospital) => {
+      return {
+        hospital_id: hospital['FID'],
+        hospital_name: hospital['Hospital'],
+        lat: hospital['Lat'],
+        long: hospital['Long'],
+        hospital_image: hospital['url'],
+        emergency_number: hospital['Emergency'],
+      };
+    });
+    await hospitalModel.addHospital(newHospitalTransformed);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const updateBridgesFromDS = async () => {
   try {
     const dsBridges = await dsModel.bridgeData();
@@ -96,43 +124,33 @@ const updateBridgesFromDS = async () => {
       return b['project_code'];
     });
     const newBridges = Object.values(dsBridges.data).filter((dsBridge) => {
-      return !bridges.includes(dsBridge['project_code']);
+      return !bridges.includes(dsBridge['Bridge Opportunity: Project Code']);
     });
     const newBridgesTransformed = newBridges.map((bridge) => {
       return {
-        country: bridge['country'],
-        // province: bridge['province'],
+        // country: bridge['country'],
         district: bridge['Bridge Opportunity: Level 2 Government'],
-        // district_id: bridge['district_id'],
         province: bridge['Bridge Opportunity: Level 1 Government'],
-        // sector_id: bridge['sector_id'],
-        // village: bridge['village'],
-        // village_id: bridge['village_id'],
-        // cell: bridge['cell'],
-        // cell_id: bridge['cell_id'],
-        bridge_site_name: bridge['Bridge Name'],
-        project_stage: bridge['Bridge Opportunity: Stage'],
-        // sub_stage: bridge['sub_stage'],
+        name: bridge['Bridge Name'],
+        stage: bridge['Bridge Opportunity: Stage'],
         project_code: bridge['Bridge Opportunity: Project Code'],
-        type: bridge['Bridge Opportnity: Bridge Type'],
+        type: bridge['Bridge Opportunity: Bridge Type'],
         span: bridge['Bridge Opportunity: Span (m)'],
         lat: bridge['Proposed Bridge Location (GPS) (Latitude)'],
-        long: bridge['Proposed Bridge Location (GPS) (Logitude)'],
+        long: bridge['Proposed Bridge Location (GPS) (Longitude)'],
         individuals_directly_served: bridge['Bridge Opportunity: Individuals Directly Served'],
-        // communities_served:
-        //   '{"' + bridge['communities_served'].join('","') + '"}',
         form_requested_by: bridge['Form: Created By'],
         rejected_comments: bridge['2013-14: Rejection Comments'],
         case_safe_id: bridge['Bridge Opportunity: CaseSafeID'],
         bridge_image: bridge['Bridge Opportunity: General Project Photos'],
-        land_ownership: bridge['Land Ownership'],
-        land_ownership_permission: bridge['Land owner Permission'],
+        land_ownership: bridge['2013-14: Land Ownership'],
+        land_ownership_permission: bridge['2013-14: Land owner Permission'],
         nearest_city: bridge['Name of nearest city'],
+        crossing_deaths: bridge['River crossing deaths in last 3 years'],
+        crossing_injuries: bridge['River crossing injuries in last 3 years'],
+        crossing_incident_desc: bridge['Incident descriptions'],
+        social_info: bridge['Notes on social information'],
         distance_from_hospital: bridge['Distance from nearest hospital (miles)'],
-        crossing_deaths: bridges['River crossing deaths in last 3 years'],
-        crossing_injuries: bridges['River crossing injuries in last 3 years'],
-        crossing_incident_desc: bridges['Incident descriptions'],
-        social_info: bridges['Notes on social information'],
       };
     });
 
@@ -142,7 +160,8 @@ const updateBridgesFromDS = async () => {
   }
 };
 
-setInterval(updateBridgesFromDS, 1000);
+setInterval(updateBridgesFromDS, 10000);
+setInterval(updateHospitalsFromDS, 1000 * 60 * 60 * 24);
 
 // if (process.env.NODE_ENV !== 'test') {
 //   updateBridgesFromDS();

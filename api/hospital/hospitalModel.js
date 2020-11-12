@@ -13,4 +13,13 @@ const getHospitalByBridgeId = async (id) => {
   return await db('hospitals').where({ 'hospitals.closest_bridge_id': id });
 };
 
-module.exports = { getAll, getHospitalById, getHospitalByBridgeId };
+const addHospital = async (newHospital) => {
+  return db('hospitals').insert(newHospital);
+};
+
+module.exports = {
+  getAll,
+  getHospitalById,
+  getHospitalByBridgeId,
+  addHospital,
+};

@@ -19,7 +19,7 @@ You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=PARd7ap
 
 ## Project Overview
 
-Trello Board: https://trello.com/b/x1iIzJdj/labs25bridgesjessica
+Trello Board: https://trello.com/b/5DFBGwvX/labs-28-bridges-to-prosperity-a
 
 Back end: https://bridges-b-api.herokuapp.com/built 
 
@@ -49,8 +49,6 @@ OKTA_URL_ISSUER=
 <br/>
 
 ## API Documentation
-
-<br/>
 
 ### Bridges Endpoints
 

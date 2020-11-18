@@ -162,8 +162,8 @@ const updateBridgesFromDS = async () => {
   }
 };
 
-setInterval(updateBridgesFromDS, 5000);
-setInterval(updateHospitalsFromDS, 5000);
+setInterval(updateBridgesFromDS, 5000 * 60);
+setInterval(updateHospitalsFromDS, 5000 * 60);
 
 // if (process.env.NODE_ENV !== 'test') {
 //   updateBridgesFromDS();

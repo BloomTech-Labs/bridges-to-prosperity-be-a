@@ -128,7 +128,6 @@ const updateBridgesFromDS = async () => {
     });
     const newBridgesTransformed = newBridges.map((bridge) => {
       return {
-        // country: bridge['country'],
         district: bridge['Bridge Opportunity: Level 2 Government'],
         province: bridge['Bridge Opportunity: Level 1 Government'],
         name: bridge['Bridge Name'],
@@ -165,8 +164,9 @@ const updateBridgesFromDS = async () => {
 setInterval(updateBridgesFromDS, 1000 * 60 * 60 * 24);
 setInterval(updateHospitalsFromDS, 1000 * 60 * 60 * 24);
 
-// if (process.env.NODE_ENV !== 'test') {
-//   updateBridgesFromDS();
-// }
+if (process.env.NODE_ENV !== 'test') {
+  updateBridgesFromDS();
+  updateHospitalsFromDS();
+}
 
 module.exports = app;

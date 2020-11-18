@@ -138,7 +138,8 @@ const updateBridgesFromDS = async () => {
         span: bridge['Bridge Opportunity: Span (m)'],
         lat: bridge['Proposed Bridge Location (GPS) (Latitude)'],
         long: bridge['Proposed Bridge Location (GPS) (Longitude)'],
-        individuals_directly_served: bridge['Bridge Opportunity: Individuals Directly Served'],
+        individuals_directly_served:
+          bridge['Bridge Opportunity: Individuals Directly Served'],
         form_requested_by: bridge['Form: Created By'],
         rejected_comments: bridge['2013-14: Rejection Comments'],
         case_safe_id: bridge['Bridge Opportunity: CaseSafeID'],
@@ -150,7 +151,8 @@ const updateBridgesFromDS = async () => {
         crossing_injuries: bridge['River crossing injuries in last 3 years'],
         crossing_incident_desc: bridge['Incident descriptions'],
         social_info: bridge['Notes on social information'],
-        distance_from_hospital: bridge['Distance from nearest hospital (miles)'],
+        distance_from_hospital:
+          bridge['Distance from nearest hospital (miles)'],
       };
     });
 
@@ -160,8 +162,8 @@ const updateBridgesFromDS = async () => {
   }
 };
 
-setInterval(updateBridgesFromDS, 1000 * 60 * 60 * 24);
-setInterval(updateHospitalsFromDS, 1000 * 60 * 60 * 24);
+setInterval(updateBridgesFromDS, 5000 * 60);
+setInterval(updateHospitalsFromDS, 5000 * 60);
 
 // if (process.env.NODE_ENV !== 'test') {
 //   updateBridgesFromDS();

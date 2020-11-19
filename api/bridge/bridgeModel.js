@@ -4,8 +4,8 @@ const findAll = async () => {
   return await db('bridges');
 };
 
-const getBridgeById = async (id) => {
-  return db('bridges').where({ 'bridges.id': id });
+const getBridgeByProjectCode = async (id) => {
+  return db('bridges').where({ 'bridges.project_code': id });
 };
 
 const getAllProjectCodes = async () => {
@@ -29,7 +29,7 @@ const findbyStage = async (stage) => {
 
 module.exports = {
   findAll,
-  getBridgeById,
+  getBridgeByProjectCode,
   findbyStage,
   addBridge,
   getAllProjectCodes,

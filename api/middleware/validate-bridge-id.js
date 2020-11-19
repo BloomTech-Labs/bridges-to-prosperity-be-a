@@ -1,9 +1,9 @@
 const bridgeModel = require('../bridge/bridgeModel');
 
 module.exports = (req, res, next) => {
-  const id = req.params.id;
+  const id = req.params.project_code;
   bridgeModel
-    .getBridgeById(id)
+    .getBridgeByProjectCode(id)
     .then((bridge) => {
       if (bridge.length == 0) {
         res.status(404).json({ message: 'Can not find a bridge with this ID' });

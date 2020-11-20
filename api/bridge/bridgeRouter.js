@@ -14,15 +14,15 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.get('/:id', validateBridgeId, async (req, res) => {
-  const id = req.params.id;
-  bridgeModel.getBridgeById(id).then((bridge) => {
+router.get('/:project_code', validateBridgeId, async (req, res) => {
+  const id = req.params.project_code;
+  bridgeModel.getBridgeByProjectCode(id).then((bridge) => {
     res.status(200).json(bridge);
   });
 });
 
-router.put('/update/:id', validateBridgeId, async (req, res) => {
-  const id = req.params.id;
+router.put('/update/:project_code', validateBridgeId, async (req, res) => {
+  const id = req.params.project_code;
   const updatedBridge = {
     ...req.body,
   };

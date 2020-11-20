@@ -1,16 +1,16 @@
 # Bridge of Prosperity Backend
 
-You can find the deployed project at https://bridges-b-api.herokuapp.com/
+You can find the deployed project at https://bridges-a-api.herokuapp.com/
 
-You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=PARd7apawNM&feature=youtu.be
+You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=szCUG177M44&feature=youtu.be
 
 ## Contributors
 
-|                                                            [Cody Solomon](https://github.com/CodyFlys)                                                            |                                        [Robert Misch](https://github.com/RobertMisch)                                         |                                                           [Xavier Hoskins](https://github.com/xavierhoskins)                                                           |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://avatars2.githubusercontent.com/u/60758834?s=460&u=e9fd1bd445778f124a4107689c839b624a4ad217&v=4" width = "200" />](https://github.com/CodyFlys) |   [<img src="https://avatars0.githubusercontent.com/u/24370208?s=400&v=4" width = "200" />](https://github.com/RobertMisch)   | [<img src="https://avatars1.githubusercontent.com/u/59076433?s=460&u=7d6b6c0d420aec9596603733d2760b4912015f9d&v=4" width = "200" />](https://github.com/xavierhoskins) |
-|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CodyFlys)                                       |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/RobertMisch)                    |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/xavierhoskins)                                       |
-|                   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/robert-misch/)                   | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/cody-solomon/) |                    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/xavier-hoskins/)                     |
+|                                                            [David Ortega](https://github.com/dortega5185)                                                            |                                                       [Dominique Kitchenakow](https://github.com/domikitchen)                                                        |                                                         [Jonathan Thornton](https://github.com/Vippsi)                                                          |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars2.githubusercontent.com/u/16767688?s=400&u=0762bd7c50b27801ca11eda5c12bba0700b2abcd&v=4" width = "200" />](https://github.com/dortega5185) | [<img src="https://avatars2.githubusercontent.com/u/64430667?s=400&u=178a6af3c84b225d6b9ffe5df7735046b77334e5&v=4" width = "200" />](https://github.com/domikitchen) | [<img src="https://avatars2.githubusercontent.com/u/49133849?s=460&u=f5f7b8b7949d7aab509be5635c9895dbbf595949&v=4" width = "200" />](https://github.com/Vippsi) |
+|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/dortega5185)                                       |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/domikitchen)                                       |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Vippsi)                                       |
+|                    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/david-m-ortega)                    |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/dominique-kitchenakow/)                |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jonathanthornton/)                |
 
 <br>
 <br>
@@ -21,7 +21,7 @@ You can find a demo vidoe of codebase at https://www.youtube.com/watch?v=PARd7ap
 
 Trello Board: https://trello.com/b/5DFBGwvX/labs-28-bridges-to-prosperity-a
 
-Back end: https://bridges-b-api.herokuapp.com/built 
+Back end: https://bridges-a-api.herokuapp.com/
 
 Tech Stack: Node.js, Express, Knex, PostgreSql, Docker
 
@@ -30,10 +30,12 @@ Tech Stack: Node.js, Express, Knex, PostgreSql, Docker
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
 ```
+PORT=
 DS_API_URL=
 DS_API_TOKEN=
 DATABASE_URL=
 OKTA_URL_ISSUER=
+OKTA_CLIENT_ID=
 ```
 
 # Installation Instructions
@@ -45,195 +47,212 @@ OKTA_URL_ISSUER=
 - run: `npm run tests` to confirm all is setup and tests pass.
 - run: `npm run watch:dev` to start nodemon in local dev enviornment.
 
-
 <br/>
 
 ## API Documentation
 
-### Bridges Endpoints
+- [Bridges Endpoints](#bridges-endpoints)
+  - [GET](#get-bridges)
+  - [GET by project code](#get-by-project-code)
+  - [PUT by project code](#put-bridge-by-project-code)
+- [Hospital Endpoints](#hospitals-endpoints)
+  - [GET](#get-hospitals)
+  - [GET by id](#get-hospitals-by-id)
+    <br/>
+    <br/>
+
+## Bridges Endpoints
 
 <br/>
-GET REQUEST TO:
 
-https://bridges-b-api.herokuapp.com/data/bridges
+### GET bridges
+
+https://bridges-a-api.herokuapp.com/bridges
 
 Returns:
 
 ```
 {
-        "id": 1,
-        "country": "Rwanda",
-        "district_id": 37,
-        "province": "Western Province",
+        "country": null,
+        "district": "Nyaruguru",
+        "province": "Southern Province",
+        "cell": null,
+        "village": null,
+        "name": "Bukinga",
+        "stage": "Cancelled",
+        "project_code": "1009317",
+        "type": "Suspension Bridge",
+        "span": null,
+        "lat": -2.760833,
+        "long": 29.488056,
+        "individuals_directly_served": null,
+        "form_requested_by": "aimablengirabakunzi taroworks",
+        "rejected_comments": "Unavailable",
+        "case_safe_id": "006f100000asFErAAM",
+        "bridge_image": null,
+        "land_ownership": "Unknown",
+        "land_ownership_permission": "Unknown",
+        "nearest_city": "Huye",
+        "crossing_deaths": null,
+        "crossing_injuries": null,
+        "crossing_incident_desc": null,
+        "social_info": null,
+        "distance_from_hospital": 4.6322184
+    },
+    {
+        "country": null,
         "district": "Nyamasheke",
-        "sector": "Kanjongo",
-        "sector_id": "3706",
-        "cell": "Kibogora",
-        "cell_id": "370601",
-        "village": "Kagarama",
-        "village_id": "37060104",
-        "bridge_site_name": "Kagarama",
-        "project_stage": "Complete",
-        "sub_stage": "In Service",
+        "province": "Western Province",
+        "cell": null,
+        "village": null,
+        "name": "Kagarama",
+        "stage": "Complete",
         "project_code": "1007325",
-        "bridge_type": "Suspension",
-        "span": 48,
+        "type": "Suspension Bridge",
+        "span": "48",
         "lat": -2.322534,
         "long": 29.141945,
-        "individuals_directly_served": "0",
-        "communities_served": [
-            "unavailable"
-        ],
-        "form_name": "Project Assessment - 2017.7.12",
-        "casesafeid_form": "a1if1000002NJhdAAG",
-        "bridge_opportunity_id": "006f100000a82Qz",
-        "bridge_image": "https://farm5.staticflickr.com/4829/44946210045_874f324731_k.jpg"
-    },
-    {
-        "id": 2,
-        "country": "Rwanda",
-        "district_id": 57,
-        "province": "Eastern Province",
-        "district": "Bugesera",
-        "sector": "Juru",
-        "sector_id": "5702",
-        "cell": "Kabukuba",
-        "cell_id": "570202",
-        "village": "Gikana",
-        "village_id": "57020201",
-        "bridge_site_name": "Gikana",
-        "project_stage": "Rejected",
-        "sub_stage": "Technical",
-        "project_code": "1007327",
-        "bridge_type": "?",
-        "span": 140,
-        "lat": -2.072628,
-        "long": 30.204382,
-        "individuals_directly_served": "0",
-        "communities_served": [
-            "unavailable"
-        ],
-        "form_name": "Project Assessment - 2018.11.30",
-        "casesafeid_form": "a1if1000002hTA9AAM",
-        "bridge_opportunity_id": "006f100000a86Cp",
-        "bridge_image": null
-    },
-    {
-        "id": 3,
-        "country": "Rwanda",
-        "district_id": 13,
-        "province": "Kigali",
-        "district": "Kicukiro",
-        "sector": "Juru-Masaka",
-        "sector_id": "1308",
-        "cell": "Rusheshe",
-        "cell_id": "130806",
-        "village": "Cyankongi",
-        "village_id": "13080601",
-        "bridge_site_name": "Cyankongi",
-        "project_stage": "Rejected",
-        "sub_stage": "Technical",
-        "project_code": "1007328",
-        "bridge_type": "?",
-        "span": 100,
-        "lat": -2.048451,
-        "long": 30.191277,
-        "individuals_directly_served": "0",
-        "communities_served": [
-            "unavailable"
-        ],
-        "form_name": "Project Assessment - 2018.11.30",
-        "casesafeid_form": "a1if1000002hT9pAAE",
-        "bridge_opportunity_id": "006f100000a86Cq",
-        "bridge_image": null
-    }...
+        "individuals_directly_served": "4000",
+        "form_requested_by": "Stephanie May",
+        "rejected_comments": "Unavailable",
+        "case_safe_id": "006f100000a82QzAAI",
+        "bridge_image": "https://flic.kr/s/aHskvedfPB",
+        "land_ownership": "Unknown",
+        "land_ownership_permission": "Unknown",
+        "nearest_city": "Kibogora-Kabuga",
+        "crossing_deaths": 2,
+        "crossing_injuries": 15,
+        "crossing_incident_desc": "the injuries and deaths are caused by trying fording the river on foot when the timber bridge is washed away and sometimes fall off from the timber bridge.",
+        "social_info": "Most of the facilities locate at the left side of the river and this shows how the right side community is in the need of the safe bridge",
+        "distance_from_hospital": 0.7188005
+    }
 
     ETC
 ```
 
 <br/>
 
-GET REQUEST TO:
+### GET by project code
 
-https://bridges-b-api.herokuapp.com/bridges/:id (Ex. 13)
+https://bridges-a-api.herokuapp.com/bridges/:project_code (Ex. 1007325)
 
 Returns:
 
 ```
 {
-        "id": 13,
-        "country": "Rwanda",
-        "district_id": 42,
-        "province": "Northern Province",
-        "district": "Gakenke",
-        "sector": "Mataba-Minazi",
-        "sector_id": "4210",
-        "cell": "Gitwa-Gitwa-Nyundo-Mwanza",
-        "cell_id": "421003",
-        "village": "Mwanza",
-        "village_id": "42100307",
-        "bridge_site_name": "Gitwa",
-        "project_stage": "Identified",
-        "sub_stage": "Identified in Needs Assessment",
-        "project_code": "1007340",
-        "bridge_type": "Suspended",
-        "span": 50,
-        "lat": -1.738888,
-        "long": 29.755278,
-        "individuals_directly_served": "0",
-        "communities_served": [
-            "Gitwa",
-            "Muhororo",
-            "Mwanza"
-        ],
-        "form_name": "Project Assessment - 2018.8.17",
-        "casesafeid_form": "a1if1000002Vi9TAAS",
-        "bridge_opportunity_id": "006f100000a86D2",
-        "bridge_image": null
-    },
+        "country": null,
+        "district": "Nyamasheke",
+        "province": "Western Province",
+        "cell": null,
+        "village": null,
+        "name": "Kagarama",
+        "stage": "Complete",
+        "project_code": "1007325",
+        "type": "Suspension Bridge",
+        "span": "48",
+        "lat": -2.322534,
+        "long": 29.141945,
+        "individuals_directly_served": "4000",
+        "form_requested_by": "Stephanie May",
+        "rejected_comments": "Unavailable",
+        "case_safe_id": "006f100000a82QzAAI",
+        "bridge_image": "https://flic.kr/s/aHskvedfPB",
+        "land_ownership": "Unknown",
+        "land_ownership_permission": "Unknown",
+        "nearest_city": "Kibogora-Kabuga",
+        "crossing_deaths": 2,
+        "crossing_injuries": 15,
+        "crossing_incident_desc": "the injuries and deaths are caused by trying fording the river on foot when the timber bridge is washed away and sometimes fall off from the timber bridge.",
+        "social_info": "Most of the facilities locate at the left side of the river and this shows how the right side community is in the need of the safe bridge",
+        "distance_from_hospital": 0.7188005
+    }
 ```
 
 <br/>
 
-PUT REQUEST TO:
+### PUT bridge by project code:
 
-https://bridges-b-api.herokuapp.com/bridges/:id (Ex. 13)
+https://bridges-a-api.herokuapp.com/bridges/update/:project_code (Ex. 1007325)
 
 Returns:
 
 ```
 {
-        "id": 13,
-        "country": "Rwanda",
-        "district_id": 42,
-        "province": "Northern Province",
-        "district": "Gakenke",
-        "sector": "Mataba-Minazi",
-        "sector_id": "4210",
-        "cell": "Gitwa-Gitwa-Nyundo-Mwanza",
-        "cell_id": "421003",
-        "village": "Mwanza",
-        "village_id": "42100307",
-        "bridge_site_name": "Gitwa",
-        "project_stage": "Identified",
-        "sub_stage": "Identified in Needs Assessment",
-        "project_code": "1007340",
-        "bridge_type": "Suspended",
-        "span": 50,
-        "lat": -1.738888,
-        "long": 29.755278,
-        "individuals_directly_served": "0",
-        "communities_served": [
-            "Gitwa",
-            "Muhororo",
-            "Mwanza"
-        ],
-        "form_name": "Project Assessment - 2018.8.17",
-        "casesafeid_form": "a1if1000002Vi9TAAS",
-        "bridge_opportunity_id": "006f100000a86D2",
-        "bridge_image": null
-    },
+        "country": null,
+        "district": "Nyamasheke",
+        "province": "Western Province",
+        "cell": null,
+        "village": null,
+        "name": "Kagarama",
+        "stage": "Complete",
+        "project_code": "1007325",
+        "type": "Suspension Bridge",
+        "span": "48",
+        "lat": -2.322534,
+        "long": 29.141945,
+        "individuals_directly_served": "4000",
+        "form_requested_by": "Stephanie May",
+        "rejected_comments": "Unavailable",
+        "case_safe_id": "006f100000a82QzAAI",
+        "bridge_image": "https://flic.kr/s/aHskvedfPB",
+        "land_ownership": "Unknown",
+        "land_ownership_permission": "Unknown",
+        "nearest_city": "Kibogora-Kabuga",
+        "crossing_deaths": 2,
+        "crossing_injuries": 15,
+        "crossing_incident_desc": "the injuries and deaths are caused by trying fording the river on foot when the timber bridge is washed away and sometimes fall off from the timber bridge.",
+        "social_info": "Most of the facilities locate at the left side of the river and this shows how the right side community is in the need of the safe bridge",
+        "distance_from_hospital": 0.7188005
+    }
 ```
 
 Allows you to edit bridges information.
 <br/>
+
+## Hospitals Endpoints
+
+<br/>
+
+### GET hospitals
+
+https://bridges-a-api.herokuapp.com/hospitals
+
+Returns:
+
+```
+{
+        "hospital_id": 1,
+        "hospital_name": "Bushenge PH",
+        "lat": -2.4451,
+        "long": 28.9858,
+        "hospital_image": "https://www.ktpress.rw/wp-content/uploads/2016/03/m_This-is-Bushenge-hospital-e1513791584336.jpg",
+        "emergency_number": "785813726"
+    },
+    {
+        "hospital_id": 2,
+        "hospital_name": "Butaro DH",
+        "lat": -1.4089,
+        "long": 29.8366,
+        "hospital_image": "https://inhabitat.com/wp-content/blogs.dir/1/files/2011/01/Butaro-Hospital-9.jpg",
+        "emergency_number": "783849767"
+    },
+```
+
+<br/>
+
+### GET hospitals by id
+
+https://bridges-a-api.herokuapp.com/hospitals/:hospital_id (Ex. 1)
+
+Returns:
+
+```
+{
+        "hospital_id": 1,
+        "hospital_name": "Bushenge PH",
+        "lat": -2.4451,
+        "long": 28.9858,
+        "hospital_image": "https://www.ktpress.rw/wp-content/uploads/2016/03/m_This-is-Bushenge-hospital-e1513791584336.jpg",
+        "emergency_number": "785813726"
+    },
+```
